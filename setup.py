@@ -10,5 +10,5 @@ setup(name='custom_text_test_runner',
       url='https://github.com/agramian/custom-text-test-runner',
       packages=['custom_text_test_runner'],
       install_requires=['table_printer'],
-      dependency_links=['git+git://github.com/agramian/table-printer.git']
+      dependency_links=['https://github.com/agramian/table-printer/tarball/master#egg=table_printer-1.0']
      )
