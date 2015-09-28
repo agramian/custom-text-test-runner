@@ -10,7 +10,7 @@ A custom test runner for python unittest which provides the following additional
 - config file can be passed with additional information for more customization (currently can provide a device_name key in the config to specify which devices to run a selenium or appium test for example with)
 
 ### Installation
-`pip install git+git://github.com/agramian/custom-text-test-runner.git --process-dependency-links`
+`pip install custom_text_test_runner`
 
 ### Usage
 ```
