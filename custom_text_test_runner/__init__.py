@@ -144,7 +144,11 @@ class CustomTextTestResult(result.TestResult):
         self.suite_map = {}
 
     def stopTestRun(self):
-        self.results['suites'][self.suite_map[self.suite]]['execution_time'] = format(self.suite_execution_time, '.%sf' %CustomTextTestResult._execution_time_significant_digits)
+        # if no tests or some failure occured execution time may not have been set
+        try:
+            self.results['suites'][self.suite_map[self.suite]]['execution_time'] = format(self.suite_execution_time, '.%sf' %CustomTextTestResult._execution_time_significant_digits)
+        except:
+            pass
         self.results['execution_time'] = format(self.total_execution_time, '.%sf' %CustomTextTestResult._execution_time_significant_digits)
         self.stream.writeln(self.separator3)
         if not os.path.exists(self.results_file_path):
