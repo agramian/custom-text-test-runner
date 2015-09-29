@@ -1,4 +1,4 @@
-# custom-text-test-runner
+# Custom Text Test Runner
 
 ### Description
 A custom test runner for python unittest which provides the following additional features:
