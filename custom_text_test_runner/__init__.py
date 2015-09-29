@@ -2,6 +2,7 @@
 
 import unittest
 import os, sys, traceback
+import inspect
 import json
 import time
 import re
@@ -9,6 +10,12 @@ import operator
 from unittest.runner import result
 from unittest.runner import registerResult
 from table_printer import TablePrinter
+
+def get_function_args(func_ref):
+    try:
+        return [p for p in inspect.getargspec(func_ref).args if p != 'self']
+    except:
+        return None
 
 def store_class_fields(class_ref, args_passed):
     """ Store the passed in class fields in self
@@ -85,7 +92,7 @@ class CustomTextTestResult(result.TestResult):
 
     def __init__(self, stream, descriptions, verbosity, results_file_path, result_screenshots_dir, show_previous_results, config, test_types):
         super(CustomTextTestResult, self).__init__(stream, descriptions, verbosity)
-        store_class_fields(self, locals(), False)
+        store_class_fields(self, locals())
         self.show_overall_results = verbosity > 0
         self.show_test_info = verbosity > 1
         self.show_individual_suite_results = verbosity > 2
@@ -453,7 +460,7 @@ class CustomTextTestRunner(unittest.TextTestRunner):
                  test_description=None,
                  config=None,
                  test_types=None):
-        store_class_fields(self, locals(), False)
+        store_class_fields(self, locals())
         self.stream = _WritelnDecorator(stream)
 
     def _makeResult(self):
