@@ -458,7 +458,7 @@ class CustomTextTestRunner(unittest.TextTestRunner):
                  buffer=False,
                  resultclass=CustomTextTestResult,
                  results_file_path="results.json",
-                 result_screenshots_dir=None,
+                 result_screenshots_dir='',
                  show_previous_results=False,
                  test_name=None,
                  test_description=None,
